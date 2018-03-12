@@ -1,14 +1,14 @@
-#Duncan
+# Duncan
 Duncan is a script which helps automate the extraction of data using blind injection techiques. It does not help you with finding these it just helps with some of the boring stuff
 
-##Why?
+## Why?
 I did a quite a few challenges and based around this and got bored writing similar scripts
 
-##Installation
+## Installation
 1. Git clone the repo
 2. `pip install doctopt`
 
-##Usage
+## Usage
 1. Capture a request using your method of choice (or just fabricate one in a text file). See below (Note: You need to put $$PAYLOAD$$ where you want the current extracted value inserting)
 ```
 POST /index.php HTTP/1.1
