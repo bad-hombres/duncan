@@ -19,11 +19,15 @@ import requests
 from docopt import docopt
 
 def parse_request(request_file):
-    headers, body = open(request_file, "r").read().split("\n\n")
-    headers = headers.split("\n")
+    parts = open(request_file, "r").read().strip().split("\n\n")
+    headers = parts[0].split("\n")
+    body = None
+    if len(parts) > 1:
+        body = parts[1].strip()
+
     method, path, _ = headers[0].split(" ")
     headers = {x.split(": ")[0]: x.split(": ")[1] for x in headers[1::]}
-    return {"method": method, "path": path, "headers": headers, "body": body.strip()}
+    return {"method": method, "path": path, "headers": headers, "body": body}
 
 char_lists = {
     "hex"          : "0123456789abcdef",
@@ -37,7 +41,6 @@ if __name__ == "__main__":
 
     current_data = ""
     chars = char_lists.get(args['-c'], args['-c'])
-    
     data_len = 1000000
     if args["-l"]:
         data_len = int(args["-l"])
@@ -46,13 +49,16 @@ if __name__ == "__main__":
 
     while len(current_data) < data_len:
         for c in chars:
-            r = requests.request(request["method"], args["-u"] + "/" + request["path"].replace("$$PAYLOAD$$", current_data + str(c)), data=request["body"].replace("$$PAYLOAD$$", current_data + str(c)), headers=request["headers"]) 
+            if request["body"]:
+                r = requests.request(request["method"], args["-u"] + request["path"].replace("$$PAYLOAD$$", current_data + str(c)), data=request["body"].replace("$$PAYLOAD$$", current_data + str(c)), headers=request["headers"])
+            else:
+                r = requests.request(request["method"], args["-u"] + request["path"].replace("$$PAYLOAD$$", current_data + str(c)), headers=request["headers"])
 
             if eval(args["-e"]):
                 current_data += c
                 print "[+] Current data extracted: {}".format(current_data)
                 continue
-            
+
             if args["-l"]:
                 if len(current_data) == int(args["-l"]):
                     print "[+] Data Extracted: {}".format(current_data)
