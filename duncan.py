@@ -19,7 +19,7 @@ import requests
 from docopt import docopt
 
 def parse_request(request_file):
-    parts = open(request_file, "r").read().strip().split("\n\n")
+    parts = open(request_file, "r").read().strip().replace("\r\n", "\n").split("\n\n")
     headers = parts[0].split("\n")
     body = None
     if len(parts) > 1:
