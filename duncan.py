@@ -46,13 +46,16 @@ if __name__ == "__main__":
         data_len = int(args["-l"])
 
     request = parse_request(args["-r"])
-
     while len(current_data) < data_len:
         for c in chars:
+            tmp_headers = {}
+            for k,v in request["headers"].items():
+                tmp_headers[k] = v.replace("$$PAYLOAD$$", current_data + str(c))
+
             if request["body"]:
-                r = requests.request(request["method"], args["-u"] + request["path"].replace("$$PAYLOAD$$", current_data + str(c)), data=request["body"].replace("$$PAYLOAD$$", current_data + str(c)), headers=request["headers"])
+                r = requests.request(request["method"], args["-u"] + request["path"].replace("$$PAYLOAD$$", current_data + str(c)), data=request["body"].replace("$$PAYLOAD$$", current_data + str(c)), headers=tmp_headers, verify=False)
             else:
-                r = requests.request(request["method"], args["-u"] + request["path"].replace("$$PAYLOAD$$", current_data + str(c)), headers=request["headers"])
+                r = requests.request(request["method"], args["-u"] + request["path"].replace("$$PAYLOAD$$", current_data + str(c)), headers=tmp_headers, verify=False)
 
             if eval(args["-e"]):
                 current_data += c

